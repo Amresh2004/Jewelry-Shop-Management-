@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jewellery Shop - Admin Home</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: url('your-image-url-here') no-repeat center center/cover;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5) url('https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg');
+           /* background-image: url(https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTBCNv6tRD5FLUpdDIWyijBOZ4P8sB2ZJ4x_jaastjz05MWqgIU); */
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            z-index: 100;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #d49300;
+        }
+
+        /* Main Content */
+        .main-content {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .main-content h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #fff;
+            text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
+        }
+
+        .main-content h3 {
+            font-size: 20px;
+            font-weight: normal;
+            margin-bottom: 30px;
+        }
+
+    
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .buttons button {
+            background-color: #d49300;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .buttons button:hover {
+            background-color: #b77b00;
+        }
+
+        /* Footer */
+        footer {
+            position: fixed;
+            bottom: 10px;
+            text-align: center;
+            color: #fff;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg" alt="Jewellery Shop Logo">
+            <h2> AW JEWELLERY SHOP</h2>
+        </div>
+        <ul>
+            <li><a href="Home.html">HOME</a></li>
+            <li><a href="add_jewelry.html">JEWELLERY</a></li>
+            <li><a href="billing.php">BILLING</a></li>
+            <li><a href="users.php">USERS</a></li>
+            <li><a href="inventory.php">REPORTS</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="logout.php">LOGOUT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <p style="font-size: 30pt; color: #b77b00;">Welcome In Amazing Jewellery Shop Web Application<p>
+        <br>
+        <h1>MANAGE YOUR SHOP</h1>
+        <h3>Created By AMRUT WARAD</h3>
+        <div class="buttons">
+            <button onclick="addJewellery()">Add Jewellery</button>
+            <button onclick="addBill()">Add Bill</button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Amazing Jewellery Shop. All rights reserved.
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Function to handle redirection to Add Jewellery page
+function addJewellery() {
+    // Show loading message
+    alert("Redirecting to Add Jewellery Page...");
+    // Wait briefly to show the alert before redirecting
+    setTimeout(() => {
+        // Redirect to the Add Jewellery page
+        window.location.href = "add_jewelry.html";
+    }, 500);
+}
+
+// Function to handle redirection to Add Bill page
+function addBill() {
+    // Show loading message
+    alert("Redirecting to Add Bill Page...");
+    // Wait briefly to show the alert before redirecting
+    setTimeout(() => {
+        // Redirect to the Add Bill page
+        window.location.href = "billing.php";
+    }, 500);
+}
+
+// Optional: Add event listeners when the document loads
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to the buttons
+    const jewelleryBtn = document.querySelector('button[onclick="addJewellery()"]');
+    const billBtn = document.querySelector('button[onclick="addBill()"]');
+
+    // Add hover effects (optional)
+    [jewelleryBtn, billBtn].forEach(btn => {
+        if (btn) {
+            btn.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.05)';
+                this.style.transition = 'transform 0.3s ease';
+            });
+            
+            btn.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        }
+    });
+});
+
+// Optional: Add check for page load completion
+window.onload = function() {
+    console.log('Page loaded successfully');
+    // You can add any additional initialization code here
+};
+    </script>
+</body>
+</html>

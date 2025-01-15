@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Jewellery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: rgba(0, 0, 0, 0.5) url('https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .form-container {
+            background: #ffffff86;
+            padding: 40px;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 5px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .form-container:before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            z-index: -1;
+            border-radius: 15px;
+            background: linear-gradient(45deg, rgb(0, 255, 4), rgb(192, 153, 255), #fe0008, #ffd700);
+            animation: gradientMove 3s infinite linear;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .form-title {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #d49300;
+            box-shadow: 0 0 10px rgba(212, 147, 0, 0.5);
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cancel-btn {
+            background-color: #ccc;
+            color: #333;
+        }
+
+        .submit-btn {
+            background-color: #d49300;
+            color: white;
+        }
+
+        .cancel-btn:hover {
+            background-color: #bbb;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .submit-btn:hover {
+            background-color: #b77b00;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 600px) {
+            .form-container {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .form-title {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-title">Add Jewellery</div>
+        <form id="jewelleryForm" action="process_form.php" method="POST">
+            <div class="form-group">
+                <input type="text" name="name" id="name" placeholder="Jewellery name" required>
+            </div>
+
+            <div class="form-group">
+                <select name="type" id="type" required>
+                    <option value="Earing">Earing</option>
+                    <option value="Necklace">Necklace</option>
+                    <option value="Ring">Ring</option>
+                    <option value="Bracelet">Bracelet</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="quantity" id="quantity" placeholder="Enter purchase quantity" required>
+            </div>
+
+            <div class="form-group">
+                <select name="carat" id="carat" required>
+                    <option value="24">24</option>
+                    <option value="22">22</option>
+                    <option value="18">18</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="price" id="price" placeholder="Enter price of item" required>
+            </div>
+
+            <div class="form-group">
+                <input type="number" name="gst" id="gst" placeholder="Enter GST" required>
+            </div>
+
+            <div class="button-group">
+                <button type="button" class="cancel-btn" onclick="window.location.href='view_jewelry.php'">Cancel</button>
+                <button type="submit" class="submit-btn">Add Jewellery</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

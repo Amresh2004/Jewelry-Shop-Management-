@@ -1,0 +1,11 @@
+CREATE TABLE jewelry (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    type VARCHAR(100) NOT NULL,
+    quantity INTEGER NOT NULL CHECK (quantity >= 0),
+    carat DECIMAL(5,2) NOT NULL CHECK (carat > 0),
+    price DECIMAL(10,2) NOT NULL CHECK (price > 0),
+    gst DECIMAL(5,2) NOT NULL CHECK (gst >= 0),
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);
