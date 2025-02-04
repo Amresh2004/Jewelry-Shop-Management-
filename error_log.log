@@ -1,0 +1,2 @@
+SQLSTATE[23502]: Not null violation: 7 ERROR:  null value in column "id" of relation "userss" violates not-null constraint
+DETAIL:  Failing row contains (null, Amresh, amreshwarad1234@gmail.com, 8624807723, Chinchwad, $2y$10$JgiOShblaSRf9RxnFKQ/6.U7X6QtrQjL2b8aYZ2UP48N2PD3TPYJa).

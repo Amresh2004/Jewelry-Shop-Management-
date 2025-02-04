@@ -4,14 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <style>
-       * {
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Arial', sans-serif;
         }
-
         body {
             display: flex;
             justify-content: center;
@@ -21,20 +26,14 @@
             background-size: cover;
             background-position: center;
         }
-
         .main-content {
             background: #ffffff86;
             padding: 40px;
             border-radius: 15px;
-            width: 100%;
             max-width: 450px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            border: 5px solid transparent;
-            background-clip: padding-box;
             position: relative;
-            overflow: hidden;
         }
-
         .main-content:before {
             content: '';
             position: absolute;
@@ -47,128 +46,190 @@
             background: linear-gradient(45deg, rgb(0, 255, 4), rgb(192, 153, 255), #fe0008, #ffd700);
             animation: gradientMove 3s infinite linear;
         }
-
         @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        /* Navigation Bar */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.174);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 20px;
-            z-index: 100;
-        }
-
-        nav .logo {
-            display: flex;
-            align-items: center;
-        }
-
-        nav .logo img {
-            height: 40px;
-            margin-right: 10px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: #fff;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        nav ul li a:hover {
-            color: #d49300;
-        }
-
-        .main-content {
-            text-align: center;
-            margin-top: 100px;
-        }
-
         .main-content h1 {
             font-size: 48px;
             margin-bottom: 20px;
             color: #fff;
             text-shadow: 1px 1px 10px rgba(0, 0, 0, 0.7);
         }
-
-        .main-content h3 {
-            font-size: 20px;
-            font-weight: normal;
-            margin-bottom: 30px;
+        .main-content h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #000;
         }
-
+        .main-content p {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: #333;
+        }
         footer {
             position: fixed;
             bottom: 10px;
             text-align: center;
             color: #fff;
+            font-size: large;
+            text-shadow: 0px 0px 10px cyan, 0px 0px 20px cyan, 0px 0px 40px cyan, 0px 0px 80px cyan;
         }
-
-
-
-    </style> 
-    <!-- Link to external CSS file -->
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+        }
+        nav .logo {
+            display: flex;
+            align-items: center;
+            color: #fff;
+        }
+        nav .logo img {
+            height: 40px;
+            margin-right: 10px;
+            border-radius: 50%;
+            border: 2px solid cyan;
+        }
+        nav .logo h2 {
+            font-size: 20px;
+            color: cyan;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: cyan;
+            text-shadow: 0 0 10px cyan;
+        }
+        .user-details {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        .user-details img {
+            height: 40px;
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid cyan;
+        }
+        .user-menu {
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border-radius: 10px;
+            padding: 10px;
+            width: 200px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-20px) scale(0);
+            opacity: 0;
+            visibility: hidden;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+        .user-menu.active {
+            transform: translateY(10px) scale(1);
+            opacity: 1;
+            visibility: visible;
+        }
+        .user-menu ul {
+            list-style: none;
+            padding: 10px;
+            margin: 0;
+        }
+        .user-menu ul li {
+            margin: 15px 0;
+        }
+        .user-menu ul li a {
+            color: cyan;
+            text-decoration: none;
+            font-size: 13px;
+            padding: 5px 10px;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+        .user-menu ul li a:hover {
+            color: #ffd700;
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
     <header>
         <nav>
             <div class="logo">
                 <img src="https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg" alt="Jewellery Shop Logo">
-                <h2> AW JEWELLERY SHOP</h2>
+                <h2>AW JEWELLERY SHOP</h2>
             </div>
             <ul>
-                <li><a href="Home.html">HOME</a></li>
+                <li><a href="Home.php">HOME</a></li>
                 <li><a href="add_jewelry.html">JEWELLERY</a></li>
+                <li><a href="inventory.php">INVENTORY</a></li>
                 <li><a href="billing.php">BILLING</a></li>
                 <li><a href="users.php">USERS</a></li>
                 <li><a href="inventory.php">REPORTS</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT US</a></li>
+                <li><a href="index.php">LOGIN</a></li>
                 <li><a href="logout.php">LOGOUT</a></li>
             </ul>
-        </nav>
-    </header>
-
-    
-        <div class="main-content">
-            <h1>About Us</h1>
-            <p>Welcome to our User Management System, an intuitive platform designed to streamline user management for businesses and organizations. Whether you're looking to track employees, manage roles, or ensure secure login protocols, our system offers the tools you need to run smoothly.</p>
-            <div class="mission">
-                <h2>Our Mission</h2>
-                <p>Our mission is to provide an efficient, user-friendly platform that simplifies user management for businesses of all sizes. We strive to empower organizations by helping them manage users, roles, and permissions securely and effortlessly.</p>
+            <div class="user-details" onclick="toggleUserMenu()">
+                <img src="hacker.png" alt="User Avatar">
+                <span>My Account</span>
             </div>
-            <div class="features">
-                <h2>Key Features</h2>
+            <div class="user-menu" id="user-menu">
                 <ul>
-                    <li>Easy user creation and management</li>
-                    <li>Role-based access control (Admin, Editor, Viewer)</li>
-                    <li>Secure authentication and session management</li>
-                    <li>User deletion and update functionality</li>
-                    <li>Modern, responsive interface for administrators</li>
+                    <li><a href="profile.php">View Profile</a></li>
+                    <li><a href="settings.php">Settings</a></li>
+                    <li><a href="logout.php">Logout</a></li>
                 </ul>
             </div>
+        </nav>
+    </header>
+    <div class="main-content">
+        <h1>About Us</h1>
+        <p>Welcome to our User Management System, an intuitive platform designed to streamline user management for businesses and organizations. Whether you're looking to track employees, manage roles, or ensure secure login protocols, our system offers the tools you need to run smoothly.</p>
+        <div class="mission">
+            <h2>Our Mission</h2>
+            <p>Our mission is to provide an efficient, user-friendly platform that simplifies user management for businesses of all sizes. We strive to empower organizations by helping them manage users, roles, and permissions securely and effortlessly.</p>
         </div>
-   
-
+        <div class="features">
+            <h2>Key Features</h2>
+            <ul>
+                <li>Easy user creation and management</li>
+                <li>Role-based access control (Admin, Editor, Viewer)</li>
+                <li>Secure authentication and session management</li>
+                <li>User deletion and update functionality</li>
+                <li>Modern, responsive interface for administrators</li>
+            </ul>
+        </div>
+    </div>
     <footer>
-        <p>&copy; © 2024 Amazing Jewellery Shop. All rights reserved.</p>
+        <p>&copy; 2024 Amazing Jewellery Shop. All rights reserved.</p>
     </footer>
+    <script>
+        function toggleUserMenu() {
+            const userMenu = document.getElementById('user-menu');
+            userMenu.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

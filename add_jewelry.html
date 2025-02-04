@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Jewellery</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +26,11 @@
             background: rgba(0, 0, 0, 0.5) url('https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg');
             background-size: cover;
             background-position: center;
+            padding-top: 70px; /* Add padding to avoid overlap with fixed nav */
+            
         }
+
+        
 
         .form-container {
             background: #ffffff86;
@@ -132,50 +142,777 @@
                 font-size: 20px;
             }
         }
+
+        footer {
+            position: fixed;
+            bottom: 10px;
+            text-align: center;
+            color: #fff;
+           font-size: large; 
+            text-shadow: 0px 0px 10px cyan,
+                        0px 0px 20px cyan,
+                        0px 0px 40px cyan,
+                        0px 0px 80px cyan;
+        }
+        .jewelry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            box-shadow: 0px 0px 50px cyan,
+    0px 0px 50px cyan inset;
+        }
+        .jewelry-item {
+            border: 1px solid #cccccc00;
+            border-radius: 8px;
+            padding: 10px;
+            text-align: center;
+        }
+        .jewelry-item img {
+            width: 100%;
+            border-radius: 8px;
+        }
+        .jewelry-item h3 {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+        .jewelry-item p {
+            margin: 5px 0;
+        }
+        .jewelry-item .buy-btn {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .jewelry-item .buy-btn:hover {
+            background-color: #0056b3;
+        }
+        .jewelry-item img {
+    width: 100%;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out; /* Smooth transition for hover effects */
+}
+
+.jewelry-item img:hover {
+    transform: scale(1.1); /* Image grows to 110% of original size */
+    box-shadow: 0 0 40px rgba(212, 147, 0, 0.5); /* Golden glow shadow */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+}
+
+/* Add container overflow to prevent image from spilling out */
+.jewelry-item {
+    border: 2px solid #000000;
+    border-radius: 8px;
+    padding: 10px;
+    text-align: center;
+    overflow: hidden; /* Contains the scaled image */
+    background: rgba(255, 255, 255, 0.471); /* Ensures background is solid when image scales */
+    transition: transform 0.3s ease;
+    
+}
+
+/* Optional: Add hover effect to entire card */
+.jewelry-item:hover {
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transform: translateY(-5px); /* Slight lift effect */
+    box-shadow: 0px 0px 50px cyan,
+    0px 0px 50px cyan inset;
+}
+        .slider-container {
+            width: 100%;
+            margin-top: 70px; /* Space for navbar */
+            margin-bottom: 40px;
+        }
+        
+        .slider {
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        .slide {
+            position: relative;
+            height: 500px; /* Fixed height for slider */
+        }
+        
+        .slide img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+        }
+        
+        /* Slider Navigation Arrows */
+        .slick-prev, .slick-next {
+            z-index: 1;
+            width: 40px;
+            height: 40px;
+        }
+        
+        .slick-prev {
+            left: 20px;
+        }
+        
+        .slick-next {
+            right: 20px;
+        }
+        
+        .slick-prev:before, .slick-next:before {
+            font-size: 40px;
+            color: #d49300;
+            text-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        /* Slider Dots */
+        .slick-dots {
+            bottom: 20px;
+        }
+        
+        .slick-dots li button:before {
+            font-size: 12px;
+            color: #d49300;
+        }
+        
+        .container {
+            margin-top: 40px;
+        }
+
+        /* Adjust body padding */
+        body {
+            padding-top: 0;
+        }
+
+        .jewelry-item h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #2ad400; /* Gold color for title */
+    font-family: 'Arial', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.jewelry-item p:first-of-type {
+    font-size: 16px;
+    color: #666; /* Gray color for carat description */
+    margin: 5px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.jewelry-item p:last-of-type {
+    font-size: 18px;
+    color: #2c5282; /* Blue color for price */
+    font-weight: bold;
+    margin: 8px 0;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Hover effects for text */
+.jewelry-item:hover h3 {
+    color: #b70000; /* Darker gold on hover */
+}
+
+.jewelry-item:hover p:first-of-type {
+    color: #444; /* Darker gray on hover */
+}
+
+.jewelry-item:hover p:last-of-type {
+    color: #1a365d; /* Darker blue on hover */
+}
+
+/* Price formatting */
+.jewelry-item p:last-of-type::before {  
+    margin-right: 2px;
+}
+@media (max-width: 768px) {
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav ul li {
+        margin: 10px;
+      }
+
+      .container {
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 20px;
+      }
+
+      button {
+        font-size: 14px;
+      }
+    }
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 20px;
+      z-index: 100;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    nav .logo {
+      display: flex;
+      align-items: center;
+      color: #fff;
+    }
+
+    nav .logo img {
+      height: 40px;
+      margin-right: 10px;
+      border-radius: 50%;
+      border: 2px solid cyan;
+    }
+
+    nav .logo h2 {
+      font-size: 20px;
+      color: cyan;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s ease, text-shadow 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      color: cyan;
+      text-shadow: 0 0 10px cyan;
+    }
+
+    .user-details {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .user-details img {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      margin-right: 10px;
+      border: 2px solid cyan;
+    }
+
+    .user-details span {
+      color: #fff;
+      font-size: 14px;
+    }
+    .user-menu {
+    position: absolute;
+    top: 60px; /* Adjust based on your nav height */
+    right: 20px; /* Align with the user-details */
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px;
+    width: 200px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transform: translateY(-20px) scale(0); /* Hidden by default */
+    transform-origin: top right; /* Animation starts from top right */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.user-menu.active {
+    transform: translateY(10px) scale(1); /* Slide down and scale up when active */
+    opacity: 5;
+    visibility: visible;
+}
+
+.user-menu ul {
+    list-style: none;
+    padding: 10px; /* Adds padding inside the menu */
+    margin: 0;
+}
+
+.user-menu ul li {
+    margin: 15px 0; /* Spacing between items */
+   
+}
+
+.user-menu ul li a {
+    color: cyan;
+    text-decoration: none;
+    font-size: 13px; /* Adjusted font size for visibility */
+    padding: 5px 10px; /* Adds internal spacing to links */
+    display: inline-block;
+    width: 50%; /* Makes the links full width */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.user-menu ul li a:hover {
+    color: #ffd700;
+    transform: scale(1.1); /* Adds hover zoom effect */
+}
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <div class="form-title">Add Jewellery</div>
-        <form id="jewelleryForm" action="process_form.php" method="POST">
-            <div class="form-group">
-                <input type="text" name="name" id="name" placeholder="Jewellery name" required>
-            </div>
+    <nav>
+        <div class="logo">
+            <img src="https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg" alt="Jewellery Shop Logo">
+            <h2> AW JEWELLERY SHOP</h2>
+        </div>
 
-            <div class="form-group">
-                <select name="type" id="type" required>
-                    <option value="Earing">Earing</option>
-                    <option value="Necklace">Necklace</option>
-                    <option value="Ring">Ring</option>
-                    <option value="Bracelet">Bracelet</option>
-                </select>
-            </div>
+        <ul>
+            <li><a href="Home.php">HOME</a></li>
+            <li><a href="add_jewelry.html">JEWELLERY</a></li>
+            <li><a href="inventory.php">INVERNTORY</a></li>
+            <li><a href="billing.php">BILLING</a></li>
+            <li><a href="users.php">USERS</a></li>
+            <li><a href="inventory.php">REPORTS</a></li>
+            <li><a href="about.html">ABOUT US</a></li>
+            <li><a href="contact.html">CONTACT US</a></li>
+            <li><a href="index.php">LOGIN</a></li>
+            <li><a href="logout.php">LOGOUT</a></li>
+        </ul>
 
-            <div class="form-group">
-                <input type="number" name="quantity" id="quantity" placeholder="Enter purchase quantity" required>
-            </div>
+        <div class="user-details" onclick="toggleUserMenu()">
+            <img src="hacker.png" alt="User Avatar">
+            <span>My Account</span>
+        </div>
 
-            <div class="form-group">
-                <select name="carat" id="carat" required>
-                    <option value="24">24</option>
-                    <option value="22">22</option>
-                    <option value="18">18</option>
-                </select>
-            </div>
+        <div class="user-menu" id="user-menu">
+            <ul>
+                <li><a href="profile.php">View Profile</a></li>
+                <li><a href="settings.php">Settings</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="form-group">
-                <input type="number" name="price" id="price" placeholder="Enter price of item" required>
-            </div>
+    <script>
+        function toggleUserMenu() 
+        {
+            const userMenu = document.getElementById('user-menu');
+            userMenu.classList.toggle('active');
+        }
+    </script>
 
-            <div class="form-group">
-                <input type="number" name="gst" id="gst" placeholder="Enter GST" required>
-            </div>
+    <div class="container">
+        <h1>Jewelry Collection</h1>
+        <div class="jewelry-grid">
+                <div class="jewelry-item">
+                    <img src="1.jpg" alt="Gold Earrings">
+                    <h3>Gold Earrings</h3>
+                    <p>24 Carat Gold</p>
+                    <p>₹25,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Gold Earrings">
+                        <input type="hidden" name="type" value="Earring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="25000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
 
-            <div class="button-group">
-                <button type="button" class="cancel-btn" onclick="window.location.href='view_jewelry.php'">Cancel</button>
-                <button type="submit" class="submit-btn">Add Jewellery</button>
-            </div>
-        </form>
-    </div>
-</body>
+                <div class="jewelry-item">
+                    <img src="21.jpg" alt="Diamond Necklace">
+                    <h3>Diamond Necklace</h3>
+                    <p>18 Carat Gold with Diamonds</p>
+                    <p>₹1,50,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Diamond Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="150000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                   </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="22.jpg" alt="Diamond Necklace">
+                    <h3>Diamond Necklace</h3>
+                    <p>18 Carat Gold with Diamonds</p>
+                    <p>₹1,50,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Diamond Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="150000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="23.jpg" alt="Ruby Ring">
+                    <h3>Ruby Ring</h3>
+                    <p>22 Carat Gold with Ruby</p>
+                    <p>₹85,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Ruby Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="85000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="24.jpg" alt="Emerald Bracelet">
+                    <h3>Emerald Bracelet</h3>
+                    <p>24 Carat Gold with Emeralds</p>
+                    <p>₹2,25,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Bracelet">
+                        <input type="hidden" name="type" value="Bracelet">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="225000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="25.jpg" alt="Pearl Earrings">
+                    <h3>Pearl Earrings</h3>
+                    <p>18 Carat Gold with Pearls</p>
+                    <p>₹45,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Pearl Earrings">
+                        <input type="hidden" name="type" value="Earing">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="45000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="7.jpg" alt="Sapphire Necklace">
+                    <h3>Sapphire Necklace</h3>
+                    <p>22 Carat Gold with Sapphires</p>
+                    <p>₹1,75,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Sapphire Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="175000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="8.jpg" alt="Diamond Ring">
+                    <h3>Diamond Ring</h3>
+                    <p>24 Carat Gold with Diamonds</p>
+                    <p>₹2,50,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Diamond Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="250000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="9.jpg" alt="Emerald Earrings">
+                    <h3>Emerald Earrings</h3>
+                    <p>18 Carat Gold with Emeralds</p>
+                    <p>₹95,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Earrings">
+                        <input type="hidden" name="type" value="Earing">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="95000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="10.jpg" alt="Ruby Bracelet">
+                    <h3>Ruby Bracelet</h3>
+                    <p>22 Carat Gold with Rubies</p>
+                    <p>₹1,25,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Ruby Bracelet">
+                        <input type="hidden" name="type" value="Bracelet">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="125000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="11.jpg" alt="Pearl Necklace">
+                    <h3>Pearl Necklace</h3>
+                    <p>18 Carat Gold with Pearls</p>
+                    <p>₹75,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Pearl Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="75000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="12.jpg" alt="Sapphire Ring">
+                    <h3>Sapphire Ring</h3>
+                    <p>24 Carat Gold with Sapphires</p>
+                    <p>₹1,85,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Sapphire Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="185000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="13.jpg" alt="Diamond Bracelet">
+                    <h3>Diamond Bracelet</h3>
+                    <p>22 Carat Gold with Diamonds</p>
+                    <p>₹2,75,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Diamond Bracelet">
+                        <input type="hidden" name="type" value="Bracelet">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="275000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="14.jpg" alt="Ruby Earrings">
+                    <h3>Ruby Earrings</h3>
+                    <p>18 Carat Gold with Rubies</p>
+                    <p>₹65,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Ruby Earrings">
+                        <input type="hidden" name="type" value="Earing">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="65000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="15.jpg" alt="Emerald Necklace">
+                    <h3>Emerald Necklace</h3>
+                    <p>24 Carat Gold with Emeralds</p>
+                    <p>₹2,95,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="295000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="16.jpg" alt="Pearl Ring">
+                    <h3>Pearl Ring</h3>
+                    <p>22 Carat Gold with Pearl</p>
+                    <p>₹55,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Pearl Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="55000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="17.jpg" alt="Sapphire Bracelet">
+                    <h3>Sapphire Bracelet</h3>
+                    <p>18 Carat Gold with Sapphires</p>
+                    <p>₹1,45,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Sapphire Bracelet">
+                        <input type="hidden" name="type" value="Bracelet">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="18">
+                        <input type="hidden" name="price" value="145000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="18.jpg" alt="Diamond Earrings">
+                    <h3>Diamond Earrings</h3>
+                    <p>24 Carat Gold with Diamonds</p>
+                    <p>₹1,95,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Diamond Earrings">
+                        <input type="hidden" name="type" value="Earing">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="195000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="19.jpg" alt="Ruby Necklace">
+                    <h3>Ruby Necklace</h3>
+                    <p>22 Carat Gold with Rubies</p>
+                    <p>₹2,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Ruby Necklace">
+                        <input type="hidden" name="type" value="Necklace">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="22">
+                        <input type="hidden" name="price" value="215000">
+                        <input type="hidden" name="gst" value="18">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+            
+                <div class="jewelry-item">
+                    <img src="20.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+
+                <div class="jewelry-item">
+                    <img src="26.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+
+                <div class="jewelry-item">
+                    <img src="27.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+
+                <div class="jewelry-item">
+                    <img src="28.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+
+                <div class="jewelry-item">
+                    <img src="29.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+
+                <div class="jewelry-item">
+                    <img src="30.jpg" alt="Emerald Ring">
+                    <h3>Emerald Ring</h3>
+                    <p>18 Carat Gold with Emerald</p>
+                    <p>₹1,15,000</p>
+                    <form action="process_form.php" method="POST">
+                        <input type="hidden" name="name" value="Emerald Ring">
+                        <input type="hidden" name="type" value="Ring">
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="carat" value="24">
+                        <input type="hidden" name="price" value="265000">
+                        <input type="hidden" name="gst" value="98">
+                        <button type="submit" class="buy-btn">Buy</button>
+                    </form>
+                </div>
+        </div>
+        <footer>
+            &copy; 2024 Amazing Jewellery Shop. All rights reserved.
+        </footer>
+    </body>
 </html>
