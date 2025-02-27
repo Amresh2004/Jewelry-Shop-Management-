@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
         /* General Reset */
@@ -135,6 +137,8 @@
                         0px 0px 20px cyan,
                         0px 0px 40px cyan,
                         0px 0px 80px cyan;
+            animation: typing 2s steps(20) infinite
+                        alternate-reverse;             
         }
 
         .main-content h1 {
@@ -144,9 +148,10 @@
             text-shadow: 0px 0px 10px cyan,
                         0px 0px 20px cyan,
                         0px 0px 40px cyan,
-                        0px 0px 80px cyan;
+                        0px 0px 80px cyan;          
         }
 
+       
         .main-content h3 {
             font-size: 20px;
             font-weight: normal;

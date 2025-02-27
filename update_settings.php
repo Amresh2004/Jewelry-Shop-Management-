@@ -1,13 +1,14 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Connect to database
-    include 'db_connect.php';
+    include 'db_connection.php';
 
     $name = $_POST['name'];
     $email = $_POST['email'];
     $current_password = $_POST['current_password'];
     $new_password = $_POST['new_password'];
     $confirm_password = $_POST['confirm_password'];
+
     $email_notifications = isset($_POST['email_notifications']) ? 1 : 0;
     $sms_notifications = isset($_POST['sms_notifications']) ? 1 : 0;
 
@@ -28,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $errors[] = 'New password and confirmation password do not match.';
     }
 
-    // Check password strength (example: at least 8 characters, contains letters and numbers)
+    // Check password strength (at least 8 characters, contains letters and numbers)
     if (strlen($new_password) < 8) {
         $errors[] = 'Password should be at least 8 characters long.';
     }
@@ -45,17 +46,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit();
     }
 
-    // Assuming the current password is stored hashed in the database, check it
     // Fetch the stored password hash from the database
-    $sql = "SELECT password FROM users WHERE email = ?";
-    $stmt = $conn->prepare($sql);
-    $stmt->bind_param('s', $email);
+    $sql = "SELECT id, password FROM userss WHERE email = :email";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':email', $email, PDO::PARAM_STR);
     $stmt->execute();
-    $stmt->store_result();
-    $stmt->bind_result($stored_password_hash);
-    $stmt->fetch();
+    
+    $user = $stmt->fetch(PDO::FETCH_ASSOC); // Fetch user data
 
-    if (!$stored_password_hash || !password_verify($current_password, $stored_password_hash)) {
+    if (!$user) {
+        echo "No user found with this email.";
+        exit();
+    }
+
+    $user_id = $user['id'];  // Get user ID
+    $stored_password_hash = $user['password'];  // Get stored password hash
+
+    // Verify current password
+    if (!password_verify($current_password, $stored_password_hash)) {
         echo 'Current password is incorrect.';
         exit();
     }
@@ -63,15 +71,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // Hash the new password
     $new_password_hash = password_hash($new_password, PASSWORD_BCRYPT);
 
-    // Update the password and notification preferences in the database
-    $update_sql = "UPDATE users SET password = ?, email_notifications = ?, sms_notifications = ? WHERE email = ?";
-    $update_stmt = $conn->prepare($update_sql);
-    $update_stmt->bind_param('siii', $new_password_hash, $email_notifications, $sms_notifications, $email);
-
-    if ($update_stmt->execute()) {
-        echo "Settings updated successfully!";
+    // Update the password in the database
+    $sql = "UPDATE userss SET password = :password WHERE id = :id";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindValue(':password', $new_password_hash, PDO::PARAM_STR);
+    $stmt->bindValue(':id', $user_id, PDO::PARAM_INT);
+    
+    if ($stmt->execute()) {
+        echo "Password updated successfully!";
     } else {
-        echo "An error occurred. Please try again later.";
+        echo "Failed to update password.";
     }
 }
 ?>

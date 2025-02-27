@@ -18,6 +18,7 @@ echo "<h1>Welcome, Admin</h1>";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>Admin Dashboard</title>
     <style>
         body {
@@ -92,7 +93,7 @@ echo "<h1>Welcome, Admin</h1>";
     // Check if any jewelry is available
     if (count($jewelryItems) > 0) {
         echo "<table>";
-        echo "<tr><th>ID</th><th>Name</th><th>Price</th><th>Actions</th></tr>";
+        echo "<tr><th>ID</th><th>Name</th>412<th>Price</th><th>Actions</th></tr>";
         
         // Display jewelry items in a table
         foreach ($jewelryItems as $item) {

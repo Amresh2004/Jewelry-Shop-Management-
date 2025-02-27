@@ -22,8 +22,7 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css">
-
-    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
         <style>
             @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
         * {

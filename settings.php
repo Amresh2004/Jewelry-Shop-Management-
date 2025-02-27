@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Settings</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <style>
         @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600&display=swap');
         * {
@@ -22,6 +23,7 @@
             background: rgba(0, 0, 0, 0.5) url('https://storage.googleapis.com/a1aa/image/b748eecf-3ee1-4a78-850f-b0b36d5f0f63.jpeg');
             background-size: cover;
             background-position: center;
+            padding-top: 80px;
         }
 
         .settings-container {
@@ -32,6 +34,7 @@
             max-width: 600px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             text-align: center;
+            margin-top: 80px
         }
 
         .settings-container h1 {
@@ -243,11 +246,11 @@ nav {
             <h3>Profile Information</h3>
             <div class="form-group">
                 <label for="name">Full Name</label>
-                <input type="text" id="name" name="name" value="John Doe" required>
+                <input type="text" id="name" name="name"  required>
             </div>
             <div class="form-group">
                 <label for="email">Email Address</label>
-                <input type="email" id="email" name="email" value="johndoe@example.com" required>
+                <input type="email" id="email" name="email"  required>
             </div>
 
             <!-- Password Section -->
@@ -263,19 +266,6 @@ nav {
             <div class="form-group">
                 <label for="confirm-password">Confirm New Password</label>
                 <input type="password" id="confirm-password" name="confirm_password" required>
-            </div>
-
-            <!-- Notifications -->
-            <h3>Notifications</h3>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" name="email_notifications" checked> Email Notifications
-                </label>
-            </div>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" name="sms_notifications"> SMS Notifications
-                </label>
             </div>
 
             <!-- Submit Button -->
